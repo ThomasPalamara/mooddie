@@ -8,17 +8,15 @@ import { Popover } from 'antd';
 import MoodPicker from 'components/Mood/MoodPicker';
 
 const Day = props => {
-  const { day, month } = props;
+  const { day, month, dayState } = props;
   const Button = styled.button`
     height: 100%;
     width: 100%;
     cursor: pointer;
   `;
-
-  console.log('updates');
   return (
-    <Popover placement="topRight" trigger="click" content={<MoodPicker month={month} day={day} />}>
-      <Button>{}</Button>
+    <Popover placement="topRight" trigger="click">
+      <Button>{dayState}</Button>
     </Popover>
   );
 };

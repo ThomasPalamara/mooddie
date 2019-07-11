@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import YearSelector from './YearSelector';
 import Calendar from './Calendar';
-import CalendarStateContext from 'contexts/CalendarState';
-
-const initialState = { '1': {}, '2': {}, '3': {}, '4': {}, '5': {}, '6': {}, '7': {}, '8': {}, '9': {}, '10': {}, '11': {}, '12': {} };
+import { CalendarStateProvider } from 'contexts/CalendarState';
+import MoodPicker from 'components/Mood/MoodPicker';
 
 const MainFrame = props => {
   const [year, setYear] = useState(new Date().getFullYear());
-  const [state, setState] = useState(initialState);
 
   const handleYearChange = e => {
     setYear(e.target.value);
@@ -17,9 +15,10 @@ const MainFrame = props => {
     <div>
       <h1 data-testid="title-calendar">Year {year}</h1>
       <YearSelector handleYearChange={handleYearChange} />
-      <CalendarStateContext.Provider value={{ state, addMood: (mood, month, day) => setState({ ...state, [month]: { [day]: mood } }) }}>
+      <CalendarStateProvider>
+      <MoodPicker month={'1'} day={'1'} />
         <Calendar year={year.toString()} />
-      </CalendarStateContext.Provider>
+      </CalendarStateProvider>
     </div>
   );
 };
