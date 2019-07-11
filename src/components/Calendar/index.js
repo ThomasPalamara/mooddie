@@ -3,8 +3,12 @@ import YearSelector from './YearSelector';
 import Calendar from './Calendar';
 import CalendarStateContext from 'contexts/CalendarState';
 
+const initialState = { '1': {}, '2': {}, '3': {}, '4': {}, '5': {}, '6': {}, '7': {}, '8': {}, '9': {}, '10': {}, '11': {}, '12': {} };
+
 const MainFrame = props => {
   const [year, setYear] = useState(new Date().getFullYear());
+  const [state, setState] = useState(initialState);
+
   const handleYearChange = e => {
     setYear(e.target.value);
   };

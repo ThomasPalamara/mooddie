@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import Day from './Day';
+import CalendarStateContext from 'contexts/CalendarState';
+import checkNested from 'utils/checkNested';
 import getMonthFromNum from 'utils/getMonthFromNum';
 
 import styled from 'styled-components';
@@ -15,8 +17,22 @@ const getDaysInMonth = (month, year) => {
   return new Date(year, month, 0).getDate();
 };
 
+function DayWithContext(props) {
+  const { day, month } = props;
+  const calendarState = useContext(CalendarStateContext).state;
+  let dayState;
+  checkNested(calendarState, month, day) ? (dayState = calendarState[month][day]) : (dayState = '');
+  console.log(dayState);
+
+  return useMemo(() => {
+    // The rest of your rendering logic
+    return <Day />;
+  }, [dayState]);
+}
+
 const Calendar = props => {
   const { year } = props;
+  const calendarState = useContext(CalendarStateContext).state;
 
   const Table = styled.table`
     border-collapse: collapse;
@@ -42,9 +58,10 @@ const Calendar = props => {
         {months.map(month => (
           <Row data-testid="month" key={month}>
             <Data key={month}>{getMonthFromNum(month)}</Data>
+
             {_.range(1, getDaysInMonth(month, year) + 1).map(day => (
               <Data data-testid="day" key={month + day}>
-                <Day day={day.toString()} month={month.toString()} />
+                <DayWithContext day={day.toString()} month={month.toString()} />
               </Data>
             ))}
           </Row>
