@@ -14,6 +14,8 @@ const MoodPicker = props => {
 
   const handleMoodSelection = e => {
     const mood = e.target.value;
+    console.log(mood, day, month);
+    console.log(state);
     setState(state => ({ ...state, [month]: { [day]: mood } }));
   };
 
@@ -22,7 +24,9 @@ const MoodPicker = props => {
       <h4>How are you feeling today ?</h4>
       <Row>
         {moods.map(mood => (
-          <MoodButton key={mood} mood={mood} handleClick={handleMoodSelection} />
+          <button key={mood} onClick={handleMoodSelection} value={mood}>
+            {mood}
+          </button>
         ))}
       </Row>
     </div>

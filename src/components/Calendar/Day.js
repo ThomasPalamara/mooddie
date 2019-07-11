@@ -15,7 +15,7 @@ const Day = props => {
     cursor: pointer;
   `;
   return (
-    <Popover placement="topRight" trigger="click">
+    <Popover placement="topRight" trigger="click" content={<MoodPicker day={day} month={month} />}>
       <Button>{dayState}</Button>
     </Popover>
   );

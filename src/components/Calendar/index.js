@@ -16,7 +16,7 @@ const MainFrame = props => {
       <h1 data-testid="title-calendar">Year {year}</h1>
       <YearSelector handleYearChange={handleYearChange} />
       <CalendarStateProvider>
-      <MoodPicker month={'1'} day={'1'} />
+        <MoodPicker month={'1'} day={'1'} />
         <Calendar year={year.toString()} />
       </CalendarStateProvider>
     </div>
