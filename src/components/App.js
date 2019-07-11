@@ -1,5 +1,5 @@
 import React from 'react';
-import MainFrame from 'components/MainFrame';
+import MainFrame from 'components/Calendar';
 
 function App() {
   return (

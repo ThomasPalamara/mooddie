@@ -1,5 +1,5 @@
 import React from 'react';
-import getMonthFromNum from 'helpers/getMonthFromNum';
+import getMonthFromNum from 'utils/getMonthFromNum';
 import { render, cleanup, fireEvent, rerender } from '@testing-library/react';
 
 afterEach(() => {

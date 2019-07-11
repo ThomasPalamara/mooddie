@@ -5,6 +5,7 @@
   "dependencies": {
     "@testing-library/react": "^8.0.4",
     "@types/jest": "^24.0.15",
+    "antd": "^3.20.1",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.0.0",
     "jest-dom": "^3.5.0",
@@ -14,7 +15,8 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
-    "styled-components": "^5.0.0-beta.8"
+    "styled-components": "^5.0.0-beta.8",
+    "why-did-you-update": "^1.0.6"
   },
   "scripts": {
     "start": "react-scripts start",

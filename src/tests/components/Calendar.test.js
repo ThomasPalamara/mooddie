@@ -1,5 +1,5 @@
 import React from 'react';
-import Calendar from 'components/MainFrame/Calendar';
+import Calendar from 'components/Calendar/Calendar';
 import { render, cleanup, fireEvent, rerender } from '@testing-library/react';
 
 afterEach(() => {
@@ -8,13 +8,7 @@ afterEach(() => {
 
 test('<Calendar should display the right number of days and months', () => {
   const wrapper = render(<Calendar year="2019" />);
-  const {
-    debug,
-    container,
-    queryByTestId,
-    getByTestId,
-    getAllByTestId
-  } = wrapper;
+  const { debug, container, queryByTestId, getByTestId, getAllByTestId } = wrapper;
 
   expect(getAllByTestId('day').length).toBe(365);
   expect(getAllByTestId('month').length).toBe(12);

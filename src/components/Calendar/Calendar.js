@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Day from './Day';
-import getMonthFromNum from 'helpers/getMonthFromNum';
+import getMonthFromNum from 'utils/getMonthFromNum';
 
 import styled from 'styled-components';
 import _ from 'lodash';
 
 const months = _.range(1, 13);
+// const months = _.range(1, 3); // ! for tests
 
+// TODO: Put in utils and add tests
 const getDaysInMonth = (month, year) => {
   return new Date(year, month, 0).getDate();
 };
@@ -41,13 +43,8 @@ const Calendar = props => {
           <Row data-testid="month" key={month}>
             <Data key={month}>{getMonthFromNum(month)}</Data>
             {_.range(1, getDaysInMonth(month, year) + 1).map(day => (
-              <Data
-                data-testid="day"
-                key={month + day}
-                data-month={month}
-                data-day={day}
-              >
-                <Day day={day} />
+              <Data data-testid="day" key={month + day}>
+                <Day day={day.toString()} month={month.toString()} />
               </Data>
             ))}
           </Row>
@@ -58,7 +55,7 @@ const Calendar = props => {
 };
 
 Calendar.propTypes = {
-  year: PropTypes.string
+  year: PropTypes.string,
 };
 
 export default Calendar;

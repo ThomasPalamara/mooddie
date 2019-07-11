@@ -1,6 +1,6 @@
 import React from 'react';
-import MainFrame from 'components/MainFrame/MainFrame';
-import Calendar from 'components/MainFrame/Calendar';
+import MainFrame from 'components/Calendar';
+import Calendar from 'components/Calendar/Calendar';
 import { render, cleanup, fireEvent, rerender } from '@testing-library/react';
 
 afterEach(() => {

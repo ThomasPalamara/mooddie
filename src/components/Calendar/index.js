@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import YearSelector from './YearSelector';
 import Calendar from './Calendar';
+import CalendarStateContext from 'contexts/CalendarState';
 
 const MainFrame = props => {
   const [year, setYear] = useState(new Date().getFullYear());
-
   const handleYearChange = e => {
     setYear(e.target.value);
   };
@@ -14,11 +13,11 @@ const MainFrame = props => {
     <div>
       <h1 data-testid="title-calendar">Year {year}</h1>
       <YearSelector handleYearChange={handleYearChange} />
-      <Calendar year={year.toString()} />
+      <CalendarStateContext.Provider value={{ state, addMood: (mood, month, day) => setState({ ...state, [month]: { [day]: mood } }) }}>
+        <Calendar year={year.toString()} />
+      </CalendarStateContext.Provider>
     </div>
   );
 };
-
-MainFrame.propTypes = {};
 
 export default MainFrame;
