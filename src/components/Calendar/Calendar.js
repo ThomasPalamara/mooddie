@@ -17,21 +17,22 @@ const getDaysInMonth = (month, year) => {
   return new Date(year, month, 0).getDate();
 };
 
+// ! <---- Important part of the component. Without useMemo, the usage of useContext would rerender the whole tree of 365 <Day/> which is expensive
 function DayWithContext(props) {
   const { day, month } = props;
   const [calendarState, setCalendarState] = useContext(CalendarStateContext);
   let dayState;
   checkNested(calendarState, month, day) ? (dayState = calendarState[month][day]) : (dayState = '');
-  console.log(dayState);
 
   return useMemo(() => {
     return <Day {...props} dayState={dayState} />;
   }, [dayState]);
 }
 
+// ! ---->
+
 const Calendar = props => {
   const { year } = props;
-  const calendarState = useContext(CalendarStateContext).state;
 
   const Table = styled.table`
     border-collapse: collapse;
