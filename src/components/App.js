@@ -1,10 +1,10 @@
 import React from 'react';
-import Calendar from 'components/Calendar';
+import MainFrame from 'components/Calendar';
 
 function App() {
   return (
     <div>
-      <Calendar />
+      <MainFrame />
     </div>
   );
 }
