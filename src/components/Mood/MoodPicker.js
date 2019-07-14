@@ -6,7 +6,7 @@ import MoodButton from './MoodButton';
 import { CalendarStateContext } from 'contexts/CalendarState';
 
 const MoodPicker = props => {
-  const { day, month } = props;
+  const { day, month, year } = props;
   const [state, setState] = useContext(CalendarStateContext);
   const Row = styled.div`
     display: flex;
@@ -14,9 +14,27 @@ const MoodPicker = props => {
 
   const handleMoodSelection = e => {
     const mood = e.target.value;
-    console.log(mood, day, month);
+    if (!state[year]) {
+      console.log('create year');
+      state[year] = {};
+    }
+    if (!state[year][month]) {
+      console.log('create month ', month);
+      state[year][month] = {};
+    }
+
+    state[year][month][day] = mood;
     console.log(state);
-    setState(state => ({ ...state, [month]: { [day]: mood } }));
+    setState(state => ({
+      ...state,
+      [year]: {
+        ...state[year],
+        [month]: {
+          ...state[year][month],
+          [day]: mood
+        }
+      }
+    }));
   };
 
   return (
@@ -35,7 +53,8 @@ const MoodPicker = props => {
 
 MoodPicker.propTypes = {
   day: PropTypes.string,
-  year: PropTypes.string,
+  month: PropTypes.string,
+  year: PropTypes.string
 };
 
 export default MoodPicker;
