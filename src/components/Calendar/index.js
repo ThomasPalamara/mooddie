@@ -3,12 +3,13 @@ import YearSelector from './YearSelector';
 import Calendar from './Calendar';
 import { CalendarStateProvider } from 'contexts/CalendarState';
 import MoodPicker from 'components/Mood/MoodPicker';
+import Operations from './Operations';
 
 const MainFrame = props => {
-  const [year, setYear] = useState(new Date().getFullYear());
+  const [year, setYear] = useState(new Date().getFullYear().toString());
 
   const handleYearChange = e => {
-    setYear(e.target.value);
+    setYear(e.target.value.toString());
   };
 
   return (
@@ -16,8 +17,8 @@ const MainFrame = props => {
       <h1 data-testid="title-calendar">Year {year}</h1>
       <YearSelector handleYearChange={handleYearChange} />
       <CalendarStateProvider>
-        <MoodPicker month={'1'} day={'1'} />
-        <Calendar year={year.toString()} />
+        <Operations />
+        <Calendar year={year} />
       </CalendarStateProvider>
     </div>
   );
