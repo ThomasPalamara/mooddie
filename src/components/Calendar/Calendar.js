@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import Day from './Day';
 import { CalendarStateContext } from 'contexts/CalendarState';
+import { YearContext } from 'contexts/YearContext';
 import checkNested from 'utils/checkNested';
 import getMonthFromNum from 'utils/getMonthFromNum';
 import getDaysInMonth from 'utils/getDaysInMonth';
@@ -14,23 +15,20 @@ const months = _.range(1, 13);
 // const months = _.range(1, 3); // ! for tests
 
 // ! <---- Important part of the component. Without useMemo, the usage of useContext would rerender the whole tree of 365 <Day/> which is expensive
-function DayWithContext(props) {
-  const { day, month, year } = props;
-  const [calendarState] = useContext(CalendarStateContext);
-  let dayState;
-  checkNested(calendarState, year, month, day)
-    ? (dayState = calendarState[year][month][day])
-    : (dayState = '');
-  return useMemo(() => {
-    return <Day {...props} dayState={dayState} />;
-  }, [dayState, props]);
-}
+// function DayWithContext(props) {
+//   const { day, month } = props;
+//   const [year] = useContext(YearContext);
+//   const [calendarState] = useContext(CalendarStateContext);
+//   let dayState;
+//   checkNested(calendarState, year, month, day) ? (dayState = calendarState[year][month][day]) : (dayState = '');
+//   return useMemo(() => {
+//     return <Day day={day} month={month} dayState={dayState} />;
+//   }, [dayState]);
+// }
 
 // ! ---->
 
 const Calendar = props => {
-  const { year } = props;
-
   const Table = styled.table`
     border-collapse: collapse;
     width: 100%;
@@ -56,16 +54,10 @@ const Calendar = props => {
           <Row data-testid="month" key={month}>
             <Data key={month}>{getMonthFromNum(month)}</Data>
 
-            {_.range(1, getDaysInMonth(month, year) + 1).map(day => {
-              console.log('ok');
+            {_.range(1, 30 + 1).map(day => {
               return (
                 <Data data-testid="day" key={month + day}>
-                  <DayWithContext
-                    day={day.toString()}
-                    month={month.toString()}
-                    year={year}
-                    key={month + day}
-                  />
+                  <Day day={day.toString()} month={month.toString()} key={month + day} />
                 </Data>
               );
             })}
@@ -74,10 +66,6 @@ const Calendar = props => {
       </tbody>
     </Table>
   );
-};
-
-Calendar.propTypes = {
-  year: PropTypes.string
 };
 
 export default Calendar;

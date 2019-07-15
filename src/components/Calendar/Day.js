@@ -4,17 +4,13 @@ import styled from 'styled-components';
 
 // TODO: Try to finish popover component
 // import Popover from 'components/ui/Popover';
+import Button from 'components/ui/DayButton.js';
 import { Popover } from 'antd';
 import MoodPicker from 'components/Mood/MoodPicker';
 
 const Day = props => {
-  const { day, month, year, dayState } = props;
+  const { day, month, dayState } = props;
   const [visible, setVisible] = useState(false);
-  const Button = styled.button`
-    height: 100%;
-    width: 100%;
-    cursor: pointer;
-  `;
 
   const handleVisibleChange = visible => {
     console.log(visible);
@@ -35,7 +31,6 @@ const Day = props => {
           }}
           day={day}
           month={month}
-          year={year}
         />
       }>
       <Button>{dayState}</Button>

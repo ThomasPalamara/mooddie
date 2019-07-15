@@ -1,10 +1,13 @@
 import React from 'react';
 import MainFrame from 'components/Calendar';
+import { YearContextProvider } from 'contexts/YearContext';
 
 function App() {
   return (
     <div>
-      <MainFrame />
+      <YearContextProvider>
+        <MainFrame />
+      </YearContextProvider>
     </div>
   );
 }
