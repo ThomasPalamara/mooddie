@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -9,17 +9,35 @@ import MoodPicker from 'components/Mood/MoodPicker';
 
 const Day = props => {
   const { day, month, year, dayState } = props;
+  const [visible, setVisible] = useState(false);
   const Button = styled.button`
     height: 100%;
     width: 100%;
     cursor: pointer;
   `;
+
+  const handleVisibleChange = visible => {
+    console.log(visible);
+    setVisible(visible);
+  };
+
   return (
     <Popover
       placement="topRight"
       trigger="click"
-      content={<MoodPicker day={day} month={month} year={year} />}
-    >
+      visible={visible}
+      onVisibleChange={handleVisibleChange}
+      content={
+        <MoodPicker
+          handleClose={() => {
+            console.log('close');
+            setVisible(false);
+          }}
+          day={day}
+          month={month}
+          year={year}
+        />
+      }>
       <Button>{dayState}</Button>
     </Popover>
   );
@@ -27,7 +45,7 @@ const Day = props => {
 
 Day.propTypes = {
   day: PropTypes.string,
-  month: PropTypes.string
+  month: PropTypes.string,
 };
 
 export default Day;
