@@ -21,7 +21,7 @@ const YearSelector = props => {
 };
 
 YearSelector.propTypes = {
-  handleYearChange: PropTypes.func
+  handleYearChange: PropTypes.func.isRequired,
 };
 
 export default YearSelector;

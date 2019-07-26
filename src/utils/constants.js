@@ -1,1 +1,1 @@
-export const moods = ['grumpy', 'sad', 'happy', 'deppressed', 'average', 'annoyed', 'anxious', 'energetic', 'sick', 'tired'];
+export const moods = ['grumpy', 'sad', 'happy', 'depressed', 'average', 'annoyed', 'anxious', 'energetic', 'sick/tired'];

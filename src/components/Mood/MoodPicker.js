@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { moods } from 'utils/constants';
-import MoodButton from './MoodButton';
+
 import { CalendarStateContext } from 'contexts/CalendarState';
+
+import Mood from './Mood';
+import { Row } from 'antd';
+
+import { moods } from 'utils/constants';
 
 const MoodPicker = props => {
   const { day, month, year, handleClose } = props;
   const [state, setState] = useContext(CalendarStateContext);
-  const Row = styled.div`
-    display: flex;
-  `;
 
   const handleMoodSelection = e => {
     const mood = e.target.value;
@@ -40,9 +40,9 @@ const MoodPicker = props => {
       <h4>How are you feeling today ?</h4>
       <Row>
         {moods.map(mood => (
-          <button key={mood} onClick={handleMoodSelection} value={mood}>
+          <Mood key={mood} mood={mood} element="button" onClick={handleMoodSelection} value={mood}>
             {mood}
-          </button>
+          </Mood>
         ))}
       </Row>
     </div>
@@ -52,7 +52,7 @@ const MoodPicker = props => {
 MoodPicker.propTypes = {
   day: PropTypes.string.isRequired,
   month: PropTypes.string.isRequired,
-  year: PropTypes.string,
+  year: PropTypes.string.isRequired,
   handleClose: PropTypes.func,
 };
 

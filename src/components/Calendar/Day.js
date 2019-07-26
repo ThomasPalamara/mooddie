@@ -2,18 +2,16 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { Mood, MoodPicker } from 'components/Mood';
 // TODO: Try to finish popover component
 // import Popover from 'components/ui/Popover';
-import Button from 'components/ui/DayButton.js';
 import { Popover } from 'antd';
-import MoodPicker from 'components/Mood/MoodPicker';
 
 const Day = props => {
-  const { day, month, dayState } = props;
+  const { day, month, year, dayState } = props;
   const [visible, setVisible] = useState(false);
 
   const handleVisibleChange = visible => {
-    console.log(visible);
     setVisible(visible);
   };
 
@@ -26,21 +24,25 @@ const Day = props => {
       content={
         <MoodPicker
           handleClose={() => {
-            console.log('close');
             setVisible(false);
           }}
           day={day}
           month={month}
+          year={year}
         />
       }>
-      <Button>{dayState}</Button>
+      <Mood element="button" style={{ height: '100%', width: '100%', cursor: 'pointer' }} mood={dayState}>
+        {dayState}
+      </Mood>
     </Popover>
   );
 };
 
 Day.propTypes = {
-  day: PropTypes.string,
-  month: PropTypes.string,
+  day: PropTypes.string.isRequired,
+  month: PropTypes.string.isRequired,
+  year: PropTypes.string.isRequired,
+  dayState: PropTypes.string,
 };
 
 export default Day;
