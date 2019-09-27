@@ -1,5 +1,5 @@
 import React from 'react';
-import Calendar from 'components/Calendar/Calendar';
+import Calendar from 'components/Calendar/Table/Calendar';
 import { render, cleanup, fireEvent, rerender } from '@testing-library/react';
 
 afterEach(() => {

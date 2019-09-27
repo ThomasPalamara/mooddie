@@ -1,0 +1,35 @@
+@import 'assets/scss/variables.scss';
+
+.mood {
+  border: none;
+  background-color: unset;
+  background-color: white;
+
+  &.happy {
+    background-color: $color-happy;
+  }
+  &.energetic {
+    background-color: $color-energetic;
+  }
+  &.grumpy {
+    background-color: $color-grumpy;
+  }
+  &.average {
+    background-color: $color-average;
+  }
+  &.anxious {
+    background-color: $color-anxious;
+  }
+  &.annoyed {
+    background-color: $color-annoyed;
+  }
+  &.sad {
+    background-color: $color-sad;
+  }
+  &.depressed {
+    background-color: $color-depressed;
+  }
+  &.tired {
+    background-color: $color-tired;
+  }
+}

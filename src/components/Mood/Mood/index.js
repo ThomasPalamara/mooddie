@@ -1,19 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { theme } from 'components/ui/theme.js';
+import styles from './style.module.scss';
 
 // TODO: FINISH STYLE FOR MOODS
 const Mood = props => {
-  const { element, style, children, mood, value, onClick } = props;
-
-  console.log(theme.mood[mood]);
-  const Element = styled[element]`
-    background-color: ${theme.mood[mood]};
-  `;
+  const { element: Element, style, children, mood, value, onClick } = props;
 
   return (
-    <Element value={value} style={style} onClick={onClick}>
+    <Element value={value} className={`${styles.mood} ${styles[mood]}`} style={style} onClick={onClick}>
       {children}
     </Element>
   );

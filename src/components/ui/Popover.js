@@ -22,13 +22,11 @@ const Popover = props => {
   useEffect(() => {
     if (anchorEl.current && popEl.current) {
       let style = '';
-      console.log(ReactDOM.findDOMNode(anchorEl.current).getBoundingClientRect());
       const { bottom, right, left, top } = ReactDOM.findDOMNode(anchorEl.current).getBoundingClientRect();
       const { width: popWidth, height: popHeight } = ReactDOM.findDOMNode(popEl.current).getBoundingClientRect();
       const offset = 5;
 
       const getPosVal = (pos, popSize) => {
-        console.log(offset);
         return pos - (offset + popSize);
       };
 

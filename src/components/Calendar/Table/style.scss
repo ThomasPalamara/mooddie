@@ -1,0 +1,25 @@
+@import 'assets/scss/variables.scss';
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tr {
+  display: block;
+  float: left;
+  width: 100 / 12 * 1%;
+  border-spacing: 0px;
+  margin: 0px -1px 0 0;
+}
+
+td {
+  display: block;
+  border: 1px solid $gray-600;
+  border-top: none;
+  padding: 0;
+  height: 30px;
+  &:first-child {
+    border-top: 1px solid $gray-600;
+  }
+}

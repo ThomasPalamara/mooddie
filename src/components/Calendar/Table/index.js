@@ -1,11 +1,11 @@
 import React, { useContext, useMemo } from 'react';
-import styled from 'styled-components';
 import _ from 'lodash';
+import './style.scss';
 
 import { CalendarStateContext } from 'contexts/CalendarState';
 import { YearContext } from 'contexts/YearContext';
 
-import Day from './Day';
+import Day from '../Day';
 
 import checkNested from 'utils/checkNested';
 import getMonthFromNum from 'utils/getMonthFromNum';
@@ -30,42 +30,24 @@ function DayWithContext(props) {
 const Calendar = props => {
   const [year] = useContext(YearContext);
 
-  const Table = styled.table`
-    border-collapse: collapse;
-    width: 100%;
-  `;
-
-  const Row = styled.tr`
-    display: block;
-    float: left;
-    width: ${100 / 12}%;
-  `;
-
-  const Data = styled.td`
-    display: block;
-    border: 1px solid #777;
-    margin: -1px -1px 0 0;
-    height: 30px;
-  `;
-
   return (
-    <Table data-testid="calendar">
+    <table data-testid="calendar">
       <tbody>
         {months.map(month => (
-          <Row data-testid="month" key={month}>
-            <Data key={month}>{getMonthFromNum(month)}</Data>
+          <tr data-testid="month" key={month}>
+            <td key={month}>{getMonthFromNum(month)}</td>
 
             {_.range(1, getDaysInMonth(month, year) + 1).map(day => {
               return (
-                <Data data-testid="day" key={month + day}>
+                <td data-testid="day" key={month + day}>
                   <DayWithContext year={year} day={day.toString()} month={month.toString()} key={month + day} />
-                </Data>
+                </td>
               );
             })}
-          </Row>
+          </tr>
         ))}
       </tbody>
-    </Table>
+    </table>
   );
 };
 

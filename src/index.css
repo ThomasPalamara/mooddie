@@ -5,3 +5,31 @@ font-family: 'Pacifico', cursive;
 font-family: 'Fredoka One', cursive;
 font-family: 'Gochi Hand', cursive;
 font-family: 'Knewave', cursive; */
+
+.happy {
+  background-color: yellow;
+}
+.energetic {
+  background-color: pink;
+}
+.grumpy {
+  background-color: red;
+}
+.average {
+  background-color: green;
+}
+.anxious {
+  background-color: blue;
+}
+.annoyed {
+  background-color: purple;
+}
+.sad {
+  background-color: darkblue;
+}
+.depressed {
+  background-color: darkgrey;
+}
+.sick {
+  background-color: grey;
+}

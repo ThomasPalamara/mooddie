@@ -1,6 +1,6 @@
 import React from 'react';
-import MainFrame from 'components/Calendar';
-import Calendar from 'components/Calendar/Calendar';
+import MainFrame from 'components/Calendar/CalandarPage';
+import Calendar from 'components/Calendar/Table/Calendar';
 import { render, cleanup, fireEvent, rerender } from '@testing-library/react';
 
 afterEach(() => {

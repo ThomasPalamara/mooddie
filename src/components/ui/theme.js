@@ -1,23 +1,23 @@
 const color = {
-  red: '#f5222d',
-  orange: '#fa541c',
-  yellow: '#ffec3d',
-  blue: '#1890ff',
-  darkblue: '#1d39c4',
-  cyan: '#13c2c2',
-  green: '#52c41a',
-  purple: '#722ed1',
+  red: '#fb6363',
+  orange: '#ff7302',
+  yellow: '#f6c72f',
+  blue: '#32c6e6',
+  darkblue: '#7578d8',
+  cyan: '#0fcabf',
+  green: '#6ad869',
+  purple: '#c481ec',
   grey: '#d8d8d8',
   darkgrey: '#323232',
   pink: '#ff85c0',
 };
 
 export const theme = {
-  breakpoints: {
-    lg: '1200px',
-    md: '1200px',
-    sm: '1200px',
-    xs: '1200px',
+  breakpoint: {
+    xl: '1200px',
+    lg: '992px',
+    md: '768px',
+    sm: '576px',
   },
   colors: {
     red: color.red,

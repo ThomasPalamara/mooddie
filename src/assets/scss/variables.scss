@@ -1,0 +1,36 @@
+$moods: 'grumpy', 'sad', 'happy', 'depressed', 'average', 'annoyed', 'anxious', 'energetic', 'tired';
+
+$primary: red;
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$red: #fb6363;
+$orange: #ff7302;
+$yellow: #f6c72f;
+$blue: #32c6e6;
+$darkblue: #7578d8;
+$cyan: #0fcabf;
+$green: #6ad869;
+$purple: #c481ec;
+$grey: #d8d8d8;
+$darkgrey: #323232;
+$pink: #ff85c0;
+
+$color-happy: $yellow;
+$color-energetic: $pink;
+$color-grumpy: $red;
+$color-average: $green;
+$color-anxious: $blue;
+$color-annoyed: $purple;
+$color-sad: $darkblue;
+$color-depressed: $darkgrey;
+$color-tired: $grey;
